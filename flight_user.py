@@ -3,8 +3,6 @@ import serial,time,struct
 
 class MultiWii:
       ATTITUDE = 108
-      
-
       def __init__(self,serPort):
             
           self.attitude = {'angx':0,'angy':0,'heading':0}
@@ -20,10 +18,9 @@ class MultiWii:
           self.ser.dsrdtr = False
           self.ser.writeTimeout = 2
           self.PRINT = 1
-
-          """Time to wait until the board becomes operational"""
+		  ## wakeup timer to 2 sec ##
           wakeup = 2
-          
+          ## wrapping in try catch block ##
           try:
             self.ser.open()
             if self.PRINT:
